@@ -25,7 +25,7 @@ namespace IncidentAPI_Mahdi.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Incident>> PostIncident(Incident incident)
 		{
-			incident.Status = "OPEN"; 
+			incident.Status = "IN PROGRESS";
 			incident.CreatedAt = DateTime.Now;
 			_context.Incidents.Add(incident);
 			await _context.SaveChangesAsync();

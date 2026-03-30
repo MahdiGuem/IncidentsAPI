@@ -33,9 +33,24 @@ namespace IncidentAPI_Mahdi.Controllers
 			await _context.SaveChangesAsync();
 			return CreatedAtAction(nameof(GetIncidents), new { id = incident.Id }, incident);
 		}
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> PutIncidentStatus(int id, string status)
+        {
+            if (!AllowedStatuses.Contains(status.ToUpper()))
+            {
+                return BadRequest($"Status must be one of the following: {string.Join(", ",
+                AllowedStatuses)}");
+            }
+            var incident = await _context.Incidents.FindAsync(id);
+            if (incident == null)
+                return NotFound();
+            incident.Status = status;
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
-		// Synchronous Filter by Status
-		[HttpGet("FilterByStatus")]
+        // Synchronous Filter by Status
+        [HttpGet("FilterByStatus")]
 		public IActionResult FilterByStatus([FromQuery] string status)
 		{
 			var result = _context.Incidents

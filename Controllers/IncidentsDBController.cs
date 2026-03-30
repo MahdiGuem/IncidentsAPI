@@ -41,5 +41,24 @@ namespace IncidentAPI_Mahdi.Controllers
 				.ToList();
 			return Ok(result);
 		}
+		// GET: api/IncidentsDb/FilterByStatusAsync?status=OPEN
+		[HttpGet("FilterByStatusAsync")]
+		public async Task<IActionResult> FilterByStatusAsync([FromQuery] string status)
+		{
+			var result = await _context.Incidents
+				.Where(i => i.Status.Contains(status))
+				.ToListAsync();
+			return Ok(result);
+		}
+
+		// GET: api/IncidentsDb/FilterBySeverityAsync?severity=HIGH
+		[HttpGet("FilterBySeverityAsync")]
+		public async Task<IActionResult> FilterBySeverityAsync([FromQuery] string severity)
+		{
+			var result = await _context.Incidents
+				.Where(i => i.Severity.Contains(severity))
+				.ToListAsync();
+			return Ok(result);
+		}
 	}
 }

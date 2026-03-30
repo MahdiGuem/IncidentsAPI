@@ -1,6 +1,7 @@
 using IncidentAPI_Mahdi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using IncidentAPI_Mahdi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

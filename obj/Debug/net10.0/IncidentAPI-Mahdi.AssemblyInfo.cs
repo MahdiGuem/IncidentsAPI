@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IncidentAPI-Mahdi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d65c59aed9586301b96ae90ae54a5b778a797dd2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00d4ae01db30324b7de4cd566c5e85db63e33a96")]
 [assembly: System.Reflection.AssemblyProductAttribute("IncidentAPI-Mahdi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IncidentAPI-Mahdi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

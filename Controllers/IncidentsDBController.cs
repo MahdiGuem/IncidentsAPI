@@ -33,6 +33,9 @@ namespace IncidentAPI_Mahdi.Controllers
 			await _context.SaveChangesAsync();
 			return CreatedAtAction(nameof(GetIncidents), new { id = incident.Id }, incident);
 		}
+
+
+        //« Action ajoutée par mon collaborateur ».
         [HttpPatch("{id}/status")]
         public async Task<IActionResult> PutIncidentStatus(int id, string status)
         {

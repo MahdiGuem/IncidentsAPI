@@ -157,3 +157,5 @@ C:\Users\HP\source\repos\IncidentAPI-Mahdi\IncidentAPI-Mahdi\obj\Debug\net10.0\r
 C:\Users\HP\source\repos\IncidentAPI-Mahdi\IncidentAPI-Mahdi\obj\Debug\net10.0\IncidentAPI-Mahdi.pdb
 C:\Users\HP\source\repos\IncidentAPI-Mahdi\IncidentAPI-Mahdi\obj\Debug\net10.0\IncidentAPI-Mahdi.genruntimeconfig.cache
 C:\Users\HP\source\repos\IncidentAPI-Mahdi\IncidentAPI-Mahdi\obj\Debug\net10.0\ref\IncidentAPI-Mahdi.dll
+C:\Users\HP\source\repos\IncidentAPI-Mahdi\IncidentAPI-Mahdi\obj\Debug\net10.0\IncidentAPI-Mahdi.sourcelink.json
+C:\Users\HP\source\repos\IncidentAPI-Mahdi\IncidentAPI-Mahdi\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 using IncidentAPI_Mahdi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IncidentAPI_Mahdi.Controllers
 {
@@ -9,6 +10,7 @@ namespace IncidentAPI_Mahdi.Controllers
 	public class IncidentsDbController : ControllerBase
 	{
 		private readonly IncidentsDbContext _context;
+		[RegularExpression("LOW|MEDIUM|HIGH|CRITICAL", ErrorMessage = "Invalid severity")]
 		private static readonly string[] AllowedSeverities = { "LOW", "MEDIUM", "HIGH", "CRITICAL" };
 		private static readonly string[] AllowedStatuses = { "OPEN", "IN PROGRESS", "RESOLVED" };
 		public IncidentsDbController(IncidentsDbContext context)
@@ -61,6 +63,48 @@ namespace IncidentAPI_Mahdi.Controllers
 				.Where(i => i.Severity.Contains(severity))
 				.ToListAsync();
 			return Ok(result);
+		}
+
+		[HttpGet("{id}")]
+		public async Task<ActionResult<Incident>> GetIncident(int id)
+		{
+			var incident = await _context.Incidents.FindAsync(id);
+			if (incident == null)
+			{
+				return NotFound();
+			}
+			return incident;
+		}
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutIncident(int id, Incident updatedIncident)
+		{
+			if (id != updatedIncident.Id)
+			{
+				return BadRequest();
+			}
+			var existingIncident = await _context.Incidents.FindAsync(id);
+			if (existingIncident == null)
+			{
+				return NotFound();
+			}
+			existingIncident.Title = updatedIncident.Title;
+			existingIncident.Description = updatedIncident.Description;
+			existingIncident.Severity = updatedIncident.Severity;
+			existingIncident.Status = updatedIncident.Status;
+			await _context.SaveChangesAsync();
+			return NoContent();
+		}
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteIncident(int id)
+		{
+			var incident = await _context.Incidents.FindAsync(id);
+			if (incident == null)
+			{
+				return NotFound();
+			}
+			_context.Incidents.Remove(incident);
+			await _context.SaveChangesAsync();
+			return NoContent();
 		}
 	}
 }

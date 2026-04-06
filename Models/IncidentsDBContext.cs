@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using IncidentAPI_Mahdi.Models;
 
 namespace IncidentAPI_Mahdi.Models
 {
@@ -9,7 +8,6 @@ namespace IncidentAPI_Mahdi.Models
 			: base(options)
 		{
 		}
-
 		public virtual DbSet<Incident> Incidents { get; set; }
 	}
 }

@@ -10,6 +10,7 @@ namespace IncidentAPI_Mahdi.Controllers
 	public class IncidentsDbController : ControllerBase
 	{
 		private readonly IncidentsDbContext _context;
+
 		[RegularExpression("LOW|MEDIUM|HIGH|CRITICAL", ErrorMessage = "Invalid severity")]
 		private static readonly string[] AllowedSeverities = { "LOW", "MEDIUM", "HIGH", "CRITICAL" };
 		private static readonly string[] AllowedStatuses = { "OPEN", "IN PROGRESS", "RESOLVED" };
@@ -28,6 +29,10 @@ namespace IncidentAPI_Mahdi.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Incident>> PostIncident(Incident incident)
 		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
 			incident.Status = "OPEN";
 			incident.CreatedAt = DateTime.Now;
